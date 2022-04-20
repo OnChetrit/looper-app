@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.949d574b.css",
+    "main.js": "/static/js/main.77e4a9e3.js",
+    "static/media/bass_Cm_5.mp3": "/static/media/bass_Cm_5.859d9c2328334e395abe.mp3",
+    "static/media/sax_Cm_1.mp3": "/static/media/sax_Cm_1.70d389b4d1ab8249c573.mp3",
+    "static/media/piano_Cm_1.mp3": "/static/media/piano_Cm_1.d63d7b53c9bbf13168e9.mp3",
+    "static/media/bass_C_1.mp3": "/static/media/bass_C_1.80e41d807f4a6717b80a.mp3",
+    "static/media/bass_Cm_2.mp3": "/static/media/bass_Cm_2.9d94dcd3330852343eba.mp3",
+    "static/media/bass_c_3.mp3": "/static/media/bass_c_3.99ae98cc1e4a995840ec.mp3",
+    "static/media/bass_c_4.mp3": "/static/media/bass_c_4.b2cfa7d8a43146404da3.mp3",
+    "static/media/drum_2.mp3": "/static/media/drum_2.f38d1860ebec6a75af0e.mp3",
+    "static/media/guitar_c_1.mp3": "/static/media/guitar_c_1.cd28e999297a642d8d16.mp3",
+    "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "static/media/Sofia-Pro-Bold.otf": "/static/media/Sofia-Pro-Bold.48c71aa3dea90cd4f94e.otf",
+    "static/media/Sofia-Pro-Thin.otf": "/static/media/Sofia-Pro-Thin.d2162fc7578b0d38b109.otf",
+    "static/media/Sofia-Pro-Regular.otf": "/static/media/Sofia-Pro-Regular.d36998f5d9772461be21.otf",
+    "static/media/drum.mp3": "/static/media/drum.2d34b1beba90d9917817.mp3",
+    "static/media/shaker.mp3": "/static/media/shaker.f926de6eb6ae2b7f103d.mp3",
+    "index.html": "/index.html",
+    "static/media/replace.svg": "/static/media/replace.e12d3005020f203f6ac97ba4efd9e8c3.svg",
+    "static/media/loop.svg": "/static/media/loop.ad336d7603e23af60c021f0ee12025d7.svg",
+    "static/media/pause.svg": "/static/media/pause.418b9d2ab1d64030c497b45e904c79f5.svg",
+    "static/media/play.svg": "/static/media/play.b31da51ec77bb32914161423cd6d2f82.svg",
+    "static/media/stop.svg": "/static/media/stop.a9e6e75077845ed54548aeb8fd2c26b8.svg",
+    "main.949d574b.css.map": "/static/css/main.949d574b.css.map",
+    "main.77e4a9e3.js.map": "/static/js/main.77e4a9e3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.949d574b.css",
+    "static/js/main.77e4a9e3.js"
+  ]
+}
