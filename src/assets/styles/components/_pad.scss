@@ -1,0 +1,33 @@
+.pad {
+  color: $clr3;
+  padding: 15px;
+  font-family: roboto-bold;
+  font-size: clamp(rem(16px), 2vw, rem(20px));
+  gap: 20px;
+  box-shadow: rgba(0, 0, 0, 0.56) 15px 15px 30px 4px;
+  transition: background-color 0.4s ease-in-out;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5),
+    transparent 90%,
+    transparent
+  );
+
+  .top {
+    gap: 5px;
+    .icon {
+      font-size: rem(14px);
+    }
+    .title {
+      flex: 1;
+    }
+
+    .pad-controls {
+      gap: 10px;
+
+      svg {
+        fill: $clr3;
+      }
+    }
+  }
+}

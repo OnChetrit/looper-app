@@ -1,0 +1,35 @@
+.controls {
+  z-index: 1000;
+  position: fixed;
+  padding: 30px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $nav-bg;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 15px 30px 4px;
+
+  @include for-narrow-layout {
+    border-radius: 20px 20px 0 0;
+    max-width: 500px;
+    height: 200px;
+  }
+
+  button {
+    padding: 30px;
+
+    svg {
+      &[data-loop='true'] {
+        fill: $loop;
+      }
+
+      fill: $clr3;
+      width: 24px;
+      height: 24px;
+      @include for-narrow-layout {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
