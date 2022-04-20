@@ -33,27 +33,27 @@ export const tracks = [{
     title: 'Shaker',
     path: [shaker],
     currPlay: 0,
-    isActive: false,
+    isActive: true,
     isMute: false,
-    volume: 0,
+    volume: 1,
     color: '#923cb5'
 }, {
     id: 4,
     title: 'Guitar',
     path: [guitar],
     currPlay: 0,
-    isActive: false,
+    isActive: true,
     isMute: false,
-    volume: 0,
+    volume: 1,
     color: '#b82e1f'
 }, {
     id: 5,
     title: 'Saxophone',
     path: [sax],
     currPlay: 0,
-    isActive: false,
+    isActive: true,
     isMute: false,
-    volume: 0,
+    volume: 1,
     color: '#ff8851'
 }, {
     id: 6,
