@@ -1,23 +1,37 @@
 {
   "files": {
     "main.css": "/looper-app/static/css/main.6b1a2916.css",
-    "main.js": "/looper-app/static/js/main.63f7605a.js",
+    "main.js": "/looper-app/static/js/main.682ab29e.js",
     "static/media/bass_Cm_5.mp3": "/looper-app/static/media/bass_Cm_5.859d9c2328334e395abe.mp3",
+    "static/media/vocal-loop-outofmylane-wet-Cmin.mp3": "/looper-app/static/media/vocal-loop-outofmylane-wet-Cmin.565d8feccfacfd11d997.mp3",
+    "static/media/vocal-loop-ownit-wet-Cmin.mp3": "/looper-app/static/media/vocal-loop-ownit-wet-Cmin.2bd300765f8e3a578fd5.mp3",
+    "static/media/vocal-loop-uh-C.mp3": "/looper-app/static/media/vocal-loop-uh-C.08f1a968458eb2b43d21.mp3",
+    "static/media/vocal-phrase-almost-Cmin.mp3": "/looper-app/static/media/vocal-phrase-almost-Cmin.d766c33c680b9bc425fb.mp3",
+    "static/media/vocal-get-back.mp3": "/looper-app/static/media/vocal-get-back.b1220dec139c14411de1.mp3",
     "static/media/sax_Cm_1.mp3": "/looper-app/static/media/sax_Cm_1.70d389b4d1ab8249c573.mp3",
     "static/media/piano_Cm_1.mp3": "/looper-app/static/media/piano_Cm_1.d63d7b53c9bbf13168e9.mp3",
     "static/media/bass_C_1.mp3": "/looper-app/static/media/bass_C_1.80e41d807f4a6717b80a.mp3",
     "static/media/bass_Cm_2.mp3": "/looper-app/static/media/bass_Cm_2.9d94dcd3330852343eba.mp3",
     "static/media/bass_c_3.mp3": "/looper-app/static/media/bass_c_3.99ae98cc1e4a995840ec.mp3",
     "static/media/bass_c_4.mp3": "/looper-app/static/media/bass_c_4.b2cfa7d8a43146404da3.mp3",
-    "static/media/drum_2.mp3": "/looper-app/static/media/drum_2.f38d1860ebec6a75af0e.mp3",
     "static/media/guitar_c_1.mp3": "/looper-app/static/media/guitar_c_1.cd28e999297a642d8d16.mp3",
+    "static/media/vocal-loop-first-Cmin.mp3": "/looper-app/static/media/vocal-loop-first-Cmin.b59cc54e2de005195113.mp3",
     "static/media/Roboto-Regular.ttf": "/looper-app/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/looper-app/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
     "static/media/Sofia-Pro-Bold.otf": "/looper-app/static/media/Sofia-Pro-Bold.48c71aa3dea90cd4f94e.otf",
     "static/media/Sofia-Pro-Thin.otf": "/looper-app/static/media/Sofia-Pro-Thin.d2162fc7578b0d38b109.otf",
     "static/media/Sofia-Pro-Regular.otf": "/looper-app/static/media/Sofia-Pro-Regular.d36998f5d9772461be21.otf",
-    "static/media/drum.mp3": "/looper-app/static/media/drum.2d34b1beba90d9917817.mp3",
+    "static/media/clap_snare.mp3": "/looper-app/static/media/clap_snare.9923012e77117b503246.mp3",
+    "static/media/herman_snare.mp3": "/looper-app/static/media/herman_snare.717dcb3ba76bc962ac72.mp3",
+    "static/media/hi-hats.mp3": "/looper-app/static/media/hi-hats.39f532ce3eb9e388d3ba.mp3",
+    "static/media/hihat_live_kit.mp3": "/looper-app/static/media/hihat_live_kit.cab564d8e4b0fdd4e777.mp3",
+    "static/media/snare.mp3": "/looper-app/static/media/snare.b5f8c2890d2a2fcbdf7c.mp3",
+    "static/media/hat_shaker_noisy.mp3": "/looper-app/static/media/hat_shaker_noisy.559eb94dec1e6671eaa8.mp3",
     "static/media/shaker.mp3": "/looper-app/static/media/shaker.f926de6eb6ae2b7f103d.mp3",
+    "static/media/hi_hat_live.mp3": "/looper-app/static/media/hi_hat_live.e87a8a9932f73a10bb35.mp3",
+    "static/media/kick_hard.mp3": "/looper-app/static/media/kick_hard.91f5172eed90e50621b3.mp3",
+    "static/media/snare_reverb.mp3": "/looper-app/static/media/snare_reverb.8363b26ac4c8942301f7.mp3",
+    "static/media/snare_verse.mp3": "/looper-app/static/media/snare_verse.c32905ea36c281fc423f.mp3",
     "index.html": "/looper-app/index.html",
     "static/media/replace.svg": "/looper-app/static/media/replace.e12d3005020f203f6ac97ba4efd9e8c3.svg",
     "static/media/loop.svg": "/looper-app/static/media/loop.ad336d7603e23af60c021f0ee12025d7.svg",
@@ -25,10 +39,10 @@
     "static/media/play.svg": "/looper-app/static/media/play.b31da51ec77bb32914161423cd6d2f82.svg",
     "static/media/stop.svg": "/looper-app/static/media/stop.a9e6e75077845ed54548aeb8fd2c26b8.svg",
     "main.6b1a2916.css.map": "/looper-app/static/css/main.6b1a2916.css.map",
-    "main.63f7605a.js.map": "/looper-app/static/js/main.63f7605a.js.map"
+    "main.682ab29e.js.map": "/looper-app/static/js/main.682ab29e.js.map"
   },
   "entrypoints": [
     "static/css/main.6b1a2916.css",
-    "static/js/main.63f7605a.js"
+    "static/js/main.682ab29e.js"
   ]
 }
