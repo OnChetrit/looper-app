@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   setTrackVolume,
@@ -9,14 +9,30 @@ import { Toggle } from './Toggle';
 import { useSelector } from 'react-redux';
 import { Slider } from './Slider';
 import { ReactComponent as Replace } from '../../assets/img/replace.svg';
+import Canvas from './Canvas';
+import { loopService } from '../services/loop.service';
 
 export const Pad = ({ track }) => {
-  const { isPlay, tracks } = useSelector((state) => state.loopModule);
+  const { tracks } = useSelector((state) => state.loopModule);
+  const [normalizeData, setNormalizeData] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const currPos = track.audio?.currentPosition();
-  }, [track.audio?.context.currentTime]);
+    const fetchData = async () => {
+      const res = await fetch(track.path[track.currPlay]);
+      const arrayBuffer = await res.arrayBuffer();
+      const audioBuffer = await track.audio.context.decodeAudioData(
+        arrayBuffer
+      );
+
+      const filterData = loopService.filterData(audioBuffer);
+      const nd = loopService.normalizeData(filterData);
+      setNormalizeData(nd);
+      console.log('normalizeData', normalizeData);
+    };
+
+    fetchData();
+  }, []);
 
   const toggleActive = () => {
     if (track.isActive) {
@@ -41,6 +57,10 @@ export const Pad = ({ track }) => {
     dispatch(setTrackVolume(track.id, value));
   };
 
+  const onDraw = (canvas, context) => {
+    loopService.draw(canvas, context, normalizeData);
+  };
+
   return (
     <div
       className="pad flex column br8"
@@ -59,6 +79,7 @@ export const Pad = ({ track }) => {
           <Toggle isActive={track.isActive} toggleActive={toggleActive} />
         </div>
       </div>
+      <Canvas onDraw={onDraw} width="100px" height="20px" />
       <Slider track={track} setVolume={setVolume} />
     </div>
   );

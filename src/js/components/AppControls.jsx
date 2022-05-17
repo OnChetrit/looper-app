@@ -7,14 +7,15 @@ import { ReactComponent as Pause } from '../../assets/img/pause.svg';
 import { useEffect, useState } from 'react';
 
 export const AppControls = () => {
+  const [position, setPosition] = useState('0');
   const dispatch = useDispatch();
   const { isPlay, isLoop, tracks } = useSelector((state) => state.loopModule);
 
   useEffect(() => {
-    console.log(
-      'tracks[0].audio?.context.currentTime',
-      tracks[0].audio?.context?.currentTime
-    );
+    const interval = setInterval(() => {
+      setPosition(tracks[0].audio?.currentPosition().toString());
+    }, 50);
+    return () => clearInterval(interval);
   }, []);
 
   const play = () => {
@@ -31,7 +32,7 @@ export const AppControls = () => {
     }
     tracks.forEach((track) => {
       track.audio.stop();
-      track.audio.context.currentTime = 0;
+      track.audio.playlist.sources[track.currPlay].setPosition(0);
     });
   };
 
@@ -40,6 +41,15 @@ export const AppControls = () => {
       track.audio.loop = !isLoop;
     });
     dispatch(toggleLoop());
+  };
+
+  const changePos = (val) => {
+    setPosition(val);
+    tracks.forEach((track) => {
+      track.audio.pause();
+      track.audio.playlist.sources[track.currPlay].setPosition(+val);
+      if (isPlay) track.audio.play();
+    });
   };
 
   return (
@@ -57,15 +67,13 @@ export const AppControls = () => {
         <input
           type="range"
           min="0"
-          max="100"
-          value={((tracks[0].audio?.currentPosition() / 100) * 1.25).toString()}
-          onChange={(e) => {}}
+          max="8000"
+          value={position}
+          onChange={(e) => {
+            changePos(e.target.value);
+          }}
         />
-        <progress
-          min="0"
-          max="100"
-          value={((tracks[0].audio?.currentPosition() / 100) * 1.25).toString()}
-        />
+        <progress min="0" max="8000" value={position} />
       </div>
     </div>
   );

@@ -12,12 +12,12 @@
     -webkit-appearance: none;
     background: transparent;
     z-index: 100;
-    transition: 0.4s all ease-out;
+    transition: all 0.4s ease-out;
   }
 
   input::-webkit-slider-thumb {
     -webkit-appearance: none;
-    transition: 0.4s all ease-out;
+    // transition: all 0.4s ease-out;
     width: 16px;
     height: 16px;
     border: 2px solid $clr3;
