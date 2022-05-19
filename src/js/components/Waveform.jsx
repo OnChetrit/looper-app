@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import waveformAvgChunker from '../hooks/waveformAvgChunker';
 
 const pointCoordinates = ({
@@ -53,10 +53,10 @@ const Waveform = ({ waveformData }) => {
         canvasHeight,
       });
     }
-  }, [canvasRef, waveformData]);
+  }, [canvasRef, chunkedData]);
 
   return (
-    <div style={{ padding: 16, width: '100%' }}>
+    <div style={{ padding: 16, width: '100%' }} className="canvas-container">
       <canvas
         style={{ height: canvasHeight, display: 'block', width: '100%' }}
         ref={canvasRef}

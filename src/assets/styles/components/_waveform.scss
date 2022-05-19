@@ -1,12 +1,6 @@
-.waveformContainer {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.wavePoint {
-  display: flex;
-  flex: 1;
-  background-color: white;
+.canvas-container {
+  canvas {
+    height: 0px;
+    transition: all 1.5s linear;
+  }
 }
