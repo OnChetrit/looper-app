@@ -7,29 +7,33 @@
   transform: translateX(-50%);
   background-color: $nav-bg;
   width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 15px 30px 4px;
+  // box-shadow: rgba(0, 0, 0, 0.56) 0px 15px 30px 4px;
+  box-shadow: $bg 10px 0px 50px 5px, $bg 0px -10px 50px 5px,
+    $bg -10px 0px 50px 5px;
+  height: 130px;
+  justify-content: space-evenly;
 
   @include for-narrow-layout {
     border-radius: 20px 20px 0 0;
     max-width: 500px;
     height: 200px;
   }
+  .top {
+    justify-content: space-evenly;
+    width: 100%;
+  }
 
-  button {
-    padding: 30px;
+  svg {
+    &[data-loop="true"] {
+      fill: $loop;
+    }
 
-    svg {
-      &[data-loop='true'] {
-        fill: $loop;
-      }
-
-      fill: $clr3;
-      width: 24px;
-      height: 24px;
-      @include for-narrow-layout {
-        width: 32px;
-        height: 32px;
-      }
+    fill: $clr3;
+    width: 24px;
+    height: 24px;
+    @include for-narrow-layout {
+      width: 32px;
+      height: 32px;
     }
   }
 }

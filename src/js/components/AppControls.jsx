@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { togglePlay, toggleLoop } from '../store/actions/loop.actions';
-import { ReactComponent as Loop } from '../../assets/img/loop.svg';
-import { ReactComponent as Play } from '../../assets/img/play.svg';
-import { ReactComponent as Stop } from '../../assets/img/stop.svg';
-import { ReactComponent as Pause } from '../../assets/img/pause.svg';
-import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { togglePlay, toggleLoop } from "../store/actions/loop.actions";
+import { ReactComponent as Loop } from "../../assets/img/loop.svg";
+import { ReactComponent as Play } from "../../assets/img/play.svg";
+import { ReactComponent as Stop } from "../../assets/img/stop.svg";
+import { ReactComponent as Pause } from "../../assets/img/pause.svg";
+import { useEffect, useState } from "react";
 
 export const AppControls = () => {
-  const [position, setPosition] = useState('0');
+  const [position, setPosition] = useState("0");
   const dispatch = useDispatch();
   const { isPlay, isLoop, tracks } = useSelector((state) => state.loopModule);
 
@@ -23,6 +23,7 @@ export const AppControls = () => {
       if (!isPlay) track.audio.play();
       else track.audio.pause();
     });
+
     dispatch(togglePlay());
   };
 
@@ -53,8 +54,8 @@ export const AppControls = () => {
   };
 
   return (
-    <div className="controls flex column auto-center">
-      <div className="top">
+    <div className="controls flex column align-center">
+      <div className="top flex">
         <button onClick={loop}>
           <Loop data-loop={isLoop} />
         </button>

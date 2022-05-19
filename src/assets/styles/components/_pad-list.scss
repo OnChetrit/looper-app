@@ -1,18 +1,18 @@
 .pad-list {
-  padding: 10px;
-  padding-bottom: 130px;
   color: $clr3;
   display: grid;
   grid-template-columns: 1fr;
+  padding: 10px 10px 110px;
   gap: 10px;
 
   @include for-narrow-layout {
     grid-template-columns: 1fr 1fr;
-    padding-top: 20px;
+    padding: 20px 10px 220px;
   }
+
   @include for-normal-layout {
     gap: 30px;
-    padding-top: 40px;
+    padding: 40px 10px 230px;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
