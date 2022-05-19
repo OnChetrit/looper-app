@@ -8,14 +8,14 @@ export const PadList = () => {
 
   useEffect(() => {
     //load all tracks into 'audio' key into tracks
-    tracks.forEach((track) => {
-      track.audio = new Gapless5({
-        tracks: track.path,
-        singleMode: true,
-        loop: true,
-        volume: track.volume,
-      });
-    });
+    // tracks.forEach((track) => {
+    //   track.audio = new Gapless5({
+    //     tracks: track.path,
+    //     singleMode: true,
+    //     loop: true,
+    //     volume: track.volume,
+    //   });
+    // });
   }, []);
 
   return (

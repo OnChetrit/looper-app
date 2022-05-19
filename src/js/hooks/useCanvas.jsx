@@ -5,7 +5,10 @@ const useCanvas = (onDraw, options = {}) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const context = canvas.getContext(options.context || '2d');
+    canvas.width = 268;
+    canvas.heigth = 100;
+    console.log('canvas', canvas);
+    const context = canvas.getContext('2d');
     // let animationFrameId;
 
     const render = () => {
