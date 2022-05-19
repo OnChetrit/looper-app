@@ -5,7 +5,6 @@ const initialState = {
     isRecord: false,
     isLoop: true,
     currentTime: 0
-    // volume: 1
 }
 export function loopReducer(state = initialState, action) {
     var newState = state;
@@ -16,7 +15,6 @@ export function loopReducer(state = initialState, action) {
         case 'SWITCH_TRACK':
             tracks = state.tracks.map(track => (track.id === action.track.id) ? action.track : track)
             return { ...state, tracks }
-            break
         case 'TOGGLE_TRACK_MUTE':
             return {
                 ...state, tracks: state.tracks.map(track => {

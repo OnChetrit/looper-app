@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Gapless5 } from '@regosen/gapless-5';
+
 import {
   setTrackVolume,
   toggleTrackActive,
@@ -9,8 +11,8 @@ import { Toggle } from './Toggle';
 import { useSelector } from 'react-redux';
 import { Slider } from './Slider';
 import { ReactComponent as Replace } from '../../assets/img/replace.svg';
-import Canvas from './Canvas';
 import { loopService } from '../services/loop.service';
+import Waveform from './Waveform';
 
 export const Pad = ({ track }) => {
   const { tracks } = useSelector((state) => state.loopModule);
@@ -18,21 +20,29 @@ export const Pad = ({ track }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    loadAudio();
     const fetchData = async () => {
       const res = await fetch(track.path[track.currPlay]);
       const arrayBuffer = await res.arrayBuffer();
       const audioBuffer = await track.audio.context.decodeAudioData(
         arrayBuffer
       );
-
       const filterData = loopService.filterData(audioBuffer);
       const nd = loopService.normalizeData(filterData);
       setNormalizeData(nd);
-      console.log('normalizeData', normalizeData);
     };
 
     fetchData();
-  }, []);
+  }, [track.currPlay]);
+
+  const loadAudio = () => {
+    track.audio = new Gapless5({
+      tracks: track.path,
+      singleMode: true,
+      loop: true,
+      volume: track.volume,
+    });
+  };
 
   const toggleActive = () => {
     if (track.isActive) {
@@ -57,10 +67,6 @@ export const Pad = ({ track }) => {
     dispatch(setTrackVolume(track.id, value));
   };
 
-  const onDraw = (canvas, context) => {
-    loopService.draw(canvas, context, normalizeData);
-  };
-
   return (
     <div
       className="pad flex column br8"
@@ -79,7 +85,7 @@ export const Pad = ({ track }) => {
           <Toggle isActive={track.isActive} toggleActive={toggleActive} />
         </div>
       </div>
-      <Canvas onDraw={onDraw} width="100px" height="20px" />
+      {normalizeData.length ? <Waveform waveformData={normalizeData} /> : null}
       <Slider track={track} setVolume={setVolume} />
     </div>
   );
