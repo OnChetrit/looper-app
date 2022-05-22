@@ -1,25 +1,27 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Gapless5 } from '@regosen/gapless-5';
-
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Gapless5 } from "@regosen/gapless-5";
 import {
   setTrackVolume,
   toggleTrackActive,
   switchTrack,
-} from '../store/actions/loop.actions';
-import { Toggle } from './Toggle';
-import { useSelector } from 'react-redux';
-import { Slider } from './Slider';
-import { ReactComponent as Replace } from '../../assets/img/replace.svg';
-import { loopService } from '../services/loop.service';
-import Waveform from './Waveform';
+} from "../store/actions/loop.actions";
+import { Toggle } from "./Toggle";
+import { useSelector } from "react-redux";
+import { Slider } from "./Slider";
+import { ReactComponent as Replace } from "../../assets/img/replace.svg";
+import { ReactComponent as Arrow } from "../../assets/img/arrow-down.svg";
+import { loopService } from "../services/loop.service";
+import Waveform from "./Waveform";
 
 export const Pad = ({ track }) => {
-  const { tracks } = useSelector((state) => state.loopModule);
+  const { tracks, isPlay } = useSelector((state) => state.loopModule);
   const [normalizeData, setNormalizeData] = useState([]);
+  const [canvasOpen, setCanvasOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("changed track");
     loadAudio();
     const fetchData = async () => {
       const res = await fetch(track.path[track.currPlay]);
@@ -71,7 +73,7 @@ export const Pad = ({ track }) => {
     <div
       className="pad flex column br8"
       data-active={track.isActive}
-      style={{ backgroundColor: track.isActive ? `${track.color}` : '#444444' }}
+      style={{ backgroundColor: track.isActive ? `${track.color}` : "#444444" }}
     >
       <div className="top flex">
         <div className="icon flex align-center">
@@ -79,13 +81,26 @@ export const Pad = ({ track }) => {
         </div>
         <div className="title flex align-center">{track.title}</div>
         <div className="pad-controls flex align-center">
-          <button onClick={switchNextTrack}>
+          <button
+            onClick={() => setCanvasOpen(!canvasOpen)}
+            style={{ transform: canvasOpen ? "rotate(180deg)" : "" }}
+          >
+            <Arrow />
+          </button>
+          <button className="flex align-center" onClick={switchNextTrack}>
             <Replace />
           </button>
           <Toggle isActive={track.isActive} toggleActive={toggleActive} />
         </div>
       </div>
-      {normalizeData.length ? <Waveform waveformData={normalizeData} /> : null}
+      {canvasOpen && (
+        <Waveform
+          waveformData={normalizeData}
+          track={track}
+          waveformMeta={{ trackDuration: track.audio?.currentPosition() }}
+          isPlay={isPlay}
+        />
+      )}
       <Slider track={track} setVolume={setVolume} />
     </div>
   );

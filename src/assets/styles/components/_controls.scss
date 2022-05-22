@@ -7,9 +7,9 @@
   transform: translateX(-50%);
   background-color: $nav-bg;
   width: 100%;
-  // box-shadow: rgba(0, 0, 0, 0.56) 0px 15px 30px 4px;
-  box-shadow: $bg 10px 0px 50px 5px, $bg 0px -10px 50px 5px,
-    $bg -10px 0px 50px 5px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 15px 30px 4px;
+  // box-shadow: $bg 10px 0px 50px 5px, $bg 0px -10px 50px 5px,
+  //   $bg -10px 0px 50px 5px;
   height: 130px;
   justify-content: space-evenly;
 
