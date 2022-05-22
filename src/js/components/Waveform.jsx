@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useSelector } from "react-redux";
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 
-import useSetTrackProgress from "../hooks/useSetTrackProgress";
-import waveformAvgChunker from "../hooks/waveformAvgChunker";
+import useSetTrackProgress from '../hooks/useSetTrackProgress';
+import waveformAvgChunker from '../hooks/waveformAvgChunker';
 
 const pointCoordinates = ({
   index,
@@ -30,7 +29,7 @@ const paintCanvas = ({
   playingPoint,
 }) => {
   const ref = canvasRef.current;
-  const ctx = ref.getContext("2d");
+  const ctx = ref.getContext('2d');
   ctx.clearRect(0, 0, ref.width, ref.height);
   waveformData.forEach((p, i) => {
     ctx.beginPath();
@@ -43,9 +42,9 @@ const paintCanvas = ({
     });
     ctx.rect(...coordinates);
     if (i < playingPoint) {
-      ctx.fillStyle = "#7c7c7c";
+      ctx.fillStyle = '#7c7c7c';
     } else {
-      ctx.fillStyle = "white";
+      ctx.fillStyle = 'white';
     }
     ctx.fill();
   });
@@ -60,7 +59,6 @@ const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
   const canvasHeight = 56;
   const pointWidth = 3.2;
   const pointMargin = 1;
-  const { trackDuration } = waveformMeta;
   const [trackProgress, setTrackProgress] = useState(0);
   const [startTime, setStartTime] = useState(Date.now());
   const playingPoint =
@@ -75,7 +73,7 @@ const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
       pointMargin,
       playingPoint,
     });
-  }, [playingPoint, waveformWidth]);
+  }, [playingPoint, waveformWidth, track.currPlay]);
 
   useSetTrackProgress({
     trackProgress,
@@ -86,7 +84,6 @@ const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
   });
 
   useEffect(() => {
-    console.log("waveformWidth", waveformWidth);
     if (canvasRef.current) {
       setWaveformWidth(canvasRef.current?.clientWidth);
       paintWaveform();
@@ -98,9 +95,9 @@ const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
   }, [playingPoint]);
 
   return (
-    <div style={{ padding: 8, width: "100%" }} className="canvas-container">
+    <div style={{ padding: 8, width: '100%' }} className="canvas-container">
       <canvas
-        style={{ height: canvasHeight, display: "block", width: "100%" }}
+        style={{ height: canvasHeight, display: 'block', width: '100%' }}
         ref={canvasRef}
         height={canvasHeight}
       />

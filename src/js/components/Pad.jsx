@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Gapless5 } from "@regosen/gapless-5";
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Gapless5 } from '@regosen/gapless-5';
 import {
   setTrackVolume,
   toggleTrackActive,
   switchTrack,
-} from "../store/actions/loop.actions";
-import { Toggle } from "./Toggle";
-import { useSelector } from "react-redux";
-import { Slider } from "./Slider";
-import { ReactComponent as Replace } from "../../assets/img/replace.svg";
-import { ReactComponent as Arrow } from "../../assets/img/arrow-down.svg";
-import { loopService } from "../services/loop.service";
-import Waveform from "./Waveform";
+} from '../store/actions/loop.actions';
+import { Toggle } from './Toggle';
+import { useSelector } from 'react-redux';
+import { Slider } from './Slider';
+import { ReactComponent as Replace } from '../../assets/img/replace.svg';
+import { ReactComponent as Arrow } from '../../assets/img/arrow-down.svg';
+import { loopService } from '../services/loop.service';
+import Waveform from './Waveform';
 
 export const Pad = ({ track }) => {
   const { tracks, isPlay } = useSelector((state) => state.loopModule);
@@ -21,7 +21,6 @@ export const Pad = ({ track }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("changed track");
     loadAudio();
     const fetchData = async () => {
       const res = await fetch(track.path[track.currPlay]);
@@ -73,7 +72,7 @@ export const Pad = ({ track }) => {
     <div
       className="pad flex column br8"
       data-active={track.isActive}
-      style={{ backgroundColor: track.isActive ? `${track.color}` : "#444444" }}
+      style={{ backgroundColor: track.isActive ? `${track.color}` : '#444444' }}
     >
       <div className="top flex">
         <div className="icon flex align-center">
@@ -83,7 +82,7 @@ export const Pad = ({ track }) => {
         <div className="pad-controls flex align-center">
           <button
             onClick={() => setCanvasOpen(!canvasOpen)}
-            style={{ transform: canvasOpen ? "rotate(180deg)" : "" }}
+            style={{ transform: canvasOpen ? 'rotate(180deg)' : '' }}
           >
             <Arrow />
           </button>
