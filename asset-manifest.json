@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/looper-app/static/css/main.1df534e9.css",
-    "main.js": "/looper-app/static/js/main.994e9b00.js",
+    "main.css": "/looper-app/static/css/main.a3fa6449.css",
+    "main.js": "/looper-app/static/js/main.cfb41779.js",
     "static/media/bass_Cm_5.mp3": "/looper-app/static/media/bass_Cm_5.859d9c2328334e395abe.mp3",
     "static/media/vocal-loop-outofmylane-wet-Cmin.mp3": "/looper-app/static/media/vocal-loop-outofmylane-wet-Cmin.565d8feccfacfd11d997.mp3",
     "static/media/vocal-loop-ownit-wet-Cmin.mp3": "/looper-app/static/media/vocal-loop-ownit-wet-Cmin.2bd300765f8e3a578fd5.mp3",
@@ -33,16 +33,17 @@
     "static/media/snare_reverb.mp3": "/looper-app/static/media/snare_reverb.8363b26ac4c8942301f7.mp3",
     "static/media/snare_verse.mp3": "/looper-app/static/media/snare_verse.c32905ea36c281fc423f.mp3",
     "index.html": "/looper-app/index.html",
+    "static/media/arrow-down.svg": "/looper-app/static/media/arrow-down.036019355676dc934de51a72ac1ca45e.svg",
     "static/media/replace.svg": "/looper-app/static/media/replace.e12d3005020f203f6ac97ba4efd9e8c3.svg",
     "static/media/loop.svg": "/looper-app/static/media/loop.ad336d7603e23af60c021f0ee12025d7.svg",
     "static/media/pause.svg": "/looper-app/static/media/pause.418b9d2ab1d64030c497b45e904c79f5.svg",
     "static/media/play.svg": "/looper-app/static/media/play.b31da51ec77bb32914161423cd6d2f82.svg",
     "static/media/stop.svg": "/looper-app/static/media/stop.a9e6e75077845ed54548aeb8fd2c26b8.svg",
-    "main.1df534e9.css.map": "/looper-app/static/css/main.1df534e9.css.map",
-    "main.994e9b00.js.map": "/looper-app/static/js/main.994e9b00.js.map"
+    "main.a3fa6449.css.map": "/looper-app/static/css/main.a3fa6449.css.map",
+    "main.cfb41779.js.map": "/looper-app/static/js/main.cfb41779.js.map"
   },
   "entrypoints": [
-    "static/css/main.1df534e9.css",
-    "static/js/main.994e9b00.js"
+    "static/css/main.a3fa6449.css",
+    "static/js/main.cfb41779.js"
   ]
 }
