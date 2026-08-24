@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-export default ({
+const useSetTrackProgress = ({
   trackProgress,
   setTrackProgress,
   trackDuration,
@@ -21,5 +21,7 @@ export default ({
     return () => {
       window.cancelAnimationFrame(animation);
     };
-  }, [trackPlaying, trackDuration, startTime, trackProgress]);
+  }, [trackPlaying, trackDuration, startTime, trackProgress, setTrackProgress]);
 };
+
+export default useSetTrackProgress;

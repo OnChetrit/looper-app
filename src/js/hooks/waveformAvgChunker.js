@@ -36,9 +36,11 @@ const chunkFill = (chunkNumber, chunkSize, arr) => {
   return result;
 };
 
-export default (waveData) => {
+const waveformAvgChunker = (waveData) => {
   const displayableChunks = 100;
   const itemsInChunk = Math.floor(waveData.length / displayableChunks) || 1;
   const avgChunks = chunkFill(displayableChunks, itemsInChunk, waveData);
   return avgChunks;
 };
+
+export default waveformAvgChunker;

@@ -2,7 +2,7 @@
 
 A React music-looping application exploring audio playback, loop controls, and motion-driven UI interactions.
 
-**Live site:** [onchetrit.github.io/looper-app](https://onchetrit.github.io/looper-app/)
+**Live site:** [onchetrit.github.io/looper](https://onchetrit.github.io/looper/)
 
 ## Tech
 
@@ -17,11 +17,16 @@ React, Redux, Framer Motion, Audioform, SCSS, and Create React App.
 ## Run locally
 
 ~~~bash
+nvm use
 npm install
 npm start
 ~~~
 
 Then open http://localhost:3000.
+
+This project is pinned to Node 24.11.1 in `.nvmrc`. The CRA dependency tree
+overrides its incompatible `memfs` release so the development server can run on
+modern Node versions.
 
 ## Available scripts
 

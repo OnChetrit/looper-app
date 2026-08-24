@@ -1,22 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { togglePlay, toggleLoop } from "../store/actions/loop.actions";
-import { ReactComponent as Loop } from "../../assets/img/loop.svg";
-import { ReactComponent as Play } from "../../assets/img/play.svg";
-import { ReactComponent as Stop } from "../../assets/img/stop.svg";
-import { ReactComponent as Pause } from "../../assets/img/pause.svg";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import { Pause, Play, Repeat2, Square } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLoop, togglePlay } from '../store/actions/loop.actions';
 
 export const AppControls = () => {
-  const [position, setPosition] = useState("0");
+  const [position, setPosition] = useState('0');
   const dispatch = useDispatch();
   const { isPlay, isLoop, tracks } = useSelector((state) => state.loopModule);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPosition(tracks[0].audio?.currentPosition().toString());
+      setPosition(tracks[0].audio?.currentPosition().toString() ?? '0');
     }, 50);
     return () => clearInterval(interval);
-  }, []);
+  }, [tracks]);
 
   const play = () => {
     tracks.forEach((track) => {
@@ -56,12 +53,37 @@ export const AppControls = () => {
   return (
     <div className="controls flex column align-center">
       <div className="top flex">
-        <button onClick={loop}>
-          <Loop data-loop={isLoop} />
+        <button
+          type="button"
+          className="icon-button"
+          onClick={loop}
+          aria-label={isLoop ? 'Disable looping' : 'Enable looping'}
+          aria-pressed={isLoop}
+          title={isLoop ? 'Disable looping' : 'Enable looping'}
+        >
+          <Repeat2 className="control-icon" aria-hidden="true" />
         </button>
-        <button onClick={play}>{isPlay ? <Pause /> : <Play />}</button>
-        <button onClick={stop}>
-          <Stop />
+        <button
+          type="button"
+          className="icon-button"
+          onClick={play}
+          aria-label={isPlay ? 'Pause all loops' : 'Play all loops'}
+          title={isPlay ? 'Pause all loops' : 'Play all loops'}
+        >
+          {isPlay ? (
+            <Pause className="control-icon" aria-hidden="true" />
+          ) : (
+            <Play className="control-icon" aria-hidden="true" />
+          )}
+        </button>
+        <button
+          type="button"
+          className="icon-button"
+          onClick={stop}
+          aria-label="Stop all loops"
+          title="Stop all loops"
+        >
+          <Square className="control-icon" aria-hidden="true" />
         </button>
       </div>
       <div className="slider">

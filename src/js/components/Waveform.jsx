@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
 import useSetTrackProgress from '../hooks/useSetTrackProgress';
 import waveformAvgChunker from '../hooks/waveformAvgChunker';
@@ -21,18 +21,19 @@ const pointCoordinates = ({
 };
 
 const paintCanvas = ({
-  canvasRef,
+  canvas,
   waveformData,
   canvasHeight,
   pointWidth,
   pointMargin,
   playingPoint,
 }) => {
-  const ref = canvasRef.current;
-  const ctx = ref.getContext('2d');
-  ctx.clearRect(0, 0, ref.width, ref.height);
+  const context = canvas?.getContext('2d');
+  if (!canvas || !context || !canvas.width) return;
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
   waveformData.forEach((p, i) => {
-    ctx.beginPath();
+    context.beginPath();
     const coordinates = pointCoordinates({
       index: i,
       pointWidth,
@@ -40,40 +41,33 @@ const paintCanvas = ({
       canvasHeight,
       amplitude: p,
     });
-    ctx.rect(...coordinates);
+    context.rect(...coordinates);
     if (i < playingPoint) {
-      ctx.fillStyle = '#7c7c7c';
+      context.fillStyle = '#7c7c7c';
     } else {
-      ctx.fillStyle = 'white';
+      context.fillStyle = 'white';
     }
-    ctx.fill();
+    context.fill();
   });
 };
 
-const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
-  const canvasRef = useRef();
-  const chunkedData = waveformAvgChunker(waveformData);
-  const [waveformWidth, setWaveformWidth] = useState(
-    canvasRef.current?.clientWidth
+const Waveform = ({ waveformData, isPlay, track }) => {
+  const canvasRef = useRef(null);
+  const chunkedData = useMemo(
+    () => waveformAvgChunker(waveformData),
+    [waveformData]
   );
+  const [waveformWidth, setWaveformWidth] = useState(0);
   const canvasHeight = 56;
-  const pointWidth = 3.2;
+  const pointWidth = Math.max(
+    1,
+    waveformWidth / Math.max(chunkedData.length, 1) - 1
+  );
   const pointMargin = 1;
   const [trackProgress, setTrackProgress] = useState(0);
   const [startTime, setStartTime] = useState(Date.now());
   const playingPoint =
-    (trackProgress * waveformWidth) / 100 / (pointWidth + pointMargin);
-
-  const paintWaveform = useCallback(() => {
-    paintCanvas({
-      canvasRef,
-      waveformData: chunkedData,
-      canvasHeight,
-      pointWidth,
-      pointMargin,
-      playingPoint,
-    });
-  }, [playingPoint, waveformWidth, track.currPlay]);
+    (trackProgress / 100) * chunkedData.length;
 
   useSetTrackProgress({
     trackProgress,
@@ -83,23 +77,42 @@ const Waveform = ({ waveformData, waveformMeta, isPlay, track }) => {
     trackPlaying: isPlay,
   });
 
-  useEffect(() => {
-    if (canvasRef.current) {
-      setWaveformWidth(canvasRef.current?.clientWidth);
-      paintWaveform();
-    }
-  }, [canvasRef, canvasRef.current?.clientWidth]);
+  useLayoutEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+
+    const updateWidth = () => setWaveformWidth(Math.round(canvas.clientWidth));
+    updateWidth();
+
+    const observer = new ResizeObserver(updateWidth);
+    observer.observe(canvas);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    paintWaveform();
-  }, [playingPoint]);
+    setTrackProgress(0);
+    setStartTime(Date.now());
+  }, [track.currPlay]);
+
+  useEffect(() => {
+    paintCanvas({
+      canvas: canvasRef.current,
+      waveformData: chunkedData,
+      canvasHeight,
+      pointWidth,
+      pointMargin,
+      playingPoint,
+    });
+  }, [chunkedData, canvasHeight, playingPoint, pointWidth, waveformWidth]);
 
   return (
-    <div style={{ padding: 8, width: '100%' }} className="canvas-container">
+    <div className="canvas-container">
       <canvas
-        style={{ height: canvasHeight, display: 'block', width: '100%' }}
         ref={canvasRef}
         height={canvasHeight}
+        width={waveformWidth}
+        role="img"
+        aria-label={`${track.title} audio waveform`}
       />
     </div>
   );

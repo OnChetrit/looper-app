@@ -1,6 +1,10 @@
 .canvas-container {
+  padding: 8px;
+  width: 100%;
+
   canvas {
-    height: 0px;
-    transition: all 1.5s linear;
+    display: block;
+    width: 100%;
+    height: 56px;
   }
 }
